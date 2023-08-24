@@ -5,9 +5,14 @@
     <classes>
       <class name="test.FlyDriveTest">
         <methods>
+          <include name="verifyDoneOperation"/>
+          <include name="verifyUrl"/>
           <include name="verifyDateClick"/>
+          <include name="verifyDestinationClick"/>
           <include name="pageObjects"/>
           <include name="initBrowser"/>
+          <include name="verifyFlyDriveTitle"/>
+          <include name="verifySource"/>
         </methods>
       </class> <!-- test.FlyDriveTest -->
     </classes>
