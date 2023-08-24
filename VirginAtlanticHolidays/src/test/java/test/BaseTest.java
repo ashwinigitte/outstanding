@@ -14,7 +14,7 @@ public class BaseTest extends BaseClass{
 	
 	@BeforeClass
 		public static void initBrowser() {
-			System.setProperty("webdriver.chrome.driver","C:\\Users\\Lenovo\\Downloads\\chromedriver_win32\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver","C:\\Users\\Lenovo\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 		    driver=new ChromeDriver();
 			driver.get("https://www.virginholidays.co.uk/");
 			System.out.println(driver.getTitle());

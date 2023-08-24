@@ -33,15 +33,20 @@ public class FlyDrivePage extends BaseClass {
 	@FindBy(xpath="(//*[@type='button' and @class='flyout-button'])[6]")
 	WebElement done;
 	
-	@FindBy(xpath="//button[(text()='Sun 14 Jan - Sun 21 Jan')]")
+	@FindBy(xpath="//*[contains(text(),'Mon 05 Feb - Mon 12 Feb')]//parent::div[@data-flyout-key='flydrive-date']")
 	WebElement date;
 	
-	@FindBy(css=".flatpickr-current-month")
-	WebElement augustMonth;
+	@FindBy(xpath="//*[@class='flatpickr-wrapper']//child::input[@id='holiday-datepicker']//parent::div//child::div//child::div//child::div//child::div//child::span[contains(text(),'February ')]")
+	WebElement month;
 	
-	@FindBy(xpath=("(//*[@viewBox='0 0 17 17'])[5]"))
+	@FindBy(xpath="//*[@class='flatpickr-wrapper']//child::input[@id='holiday-datepicker']//parent::div//child::div//child::div//child::div//child::div//child::div//child::input")
+	WebElement year;
+	
+	@FindBy(xpath=("//div[@class='flatpickr-wrapper']//child::input//following-sibling::input[@id='holiday-datepicker']//parent::div//child::div//child::div//child::span"))
 	WebElement prevButton;
 	
+	@FindBy(xpath="//div[@class='flatpickr-wrapper']//child::input//following-sibling::input[@id='flydrive-datepicker']//parent::div//child::div//child::div//following-sibling::div[@class='flatpickr-innerContainer']//child::div//child::div[@class='flatpickr-days']//child::div//child::span[@aria-label='February 8, 2024']")
+    WebElement selectDate;	
 	
 public FlyDrivePage(WebDriver driver) {
 	this.driver=driver;
@@ -86,18 +91,20 @@ public void clickDone(){
 
 public void dateClick() {
 	date.click();
-	String yearValue=augustMonth.getText();
-	int i=0;
-	while(i==0) {
-	if(!(yearValue.equals("November 2023"))){
-		prevButton.click();	
-	}else {
+	String yearValue=year.getText();
+	String monthValue=month.getText();
+	
+	while(true) {
+		
+	if(yearValue.equals("February ") && monthValue.equals("2024") ){
 		break;
+		
+	}else {
+		prevButton.click();
+	}	
 	}
-
-	
-	
-	}}
+	selectDate.click();
+	}
 
 public void prevButtonClick() {
 	
